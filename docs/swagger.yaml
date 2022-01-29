@@ -1,0 +1,251 @@
+basePath: /api/v1
+definitions:
+  Model.Comments:
+    properties:
+      body:
+        type: string
+    type: object
+  Model.Data:
+    properties:
+      path:
+        type: string
+      size:
+        type: integer
+    type: object
+  Model.ItemList:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      qty:
+        type: integer
+      totalPrice:
+        type: number
+      unitPrice:
+        type: number
+    type: object
+  Model.Order:
+    properties:
+      comments:
+        items:
+          $ref: '#/definitions/Model.Comments'
+        type: array
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: string
+      itemList:
+        items:
+          $ref: '#/definitions/Model.ItemList'
+        type: array
+      shippingLife:
+        $ref: '#/definitions/Model.ShippingLife'
+      status:
+        type: string
+      title:
+        type: string
+      totalAmount:
+        type: number
+      updatedAt:
+        type: string
+    type: object
+  Model.ShippingLife:
+    properties:
+      shippingMethod:
+        type: string
+      trackingNumber:
+        type: string
+    type: object
+host: localhost:4567
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a sample service for managing orders
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Orders API
+  version: "1.0"
+paths:
+  /orders:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Model.Order'
+            type: array
+      summary: Get details of all orders
+      tags:
+      - orders
+    post:
+      consumes:
+      - application/json
+      description: Create a new order with the input payload
+      parameters:
+      - description: Create order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/Model.Order'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Order Created !
+          schema:
+            type: string
+        "400":
+          description: Some Error Accrue !
+          schema:
+            type: string
+        "404":
+          description: Some Error Accrue !
+          schema:
+            type: string
+      summary: Create a new order
+      tags:
+      - orders
+  /orders/download:
+    post:
+      consumes:
+      - application/json
+      description: download file on download folder
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Downloaded File Done  !
+          schema:
+            type: string
+      summary: Get details of download file
+      tags:
+      - orders
+  /orders/files:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all files of one order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Model.Data'
+            type: array
+      summary: Get details of all files of one order
+      tags:
+      - orders
+  /orders/id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete on order by order id
+      parameters:
+      - description: Delete order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/Model.Order'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Order Deleted !
+          schema:
+            type: string
+        "400":
+          description: Some Error Accrue !
+          schema:
+            type: string
+        "404":
+          description: Some Error Accrue !
+          schema:
+            type: string
+      summary: Delete order
+      tags:
+      - orders
+    get:
+      consumes:
+      - application/json
+      description: Get details of one order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Model.Order'
+            type: array
+        "400":
+          description: Some Error Accrue !
+          schema:
+            type: string
+        "404":
+          description: Some Error Accrue !
+          schema:
+            type: string
+      summary: Get details of one order
+      tags:
+      - orders
+    put:
+      consumes:
+      - application/json
+      description: Update on order data
+      parameters:
+      - description: Update order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/Model.Order'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Order Updated !
+          schema:
+            type: string
+        "400":
+          description: Some Error Accrue !
+          schema:
+            type: string
+        "404":
+          description: Some Error Accrue !
+          schema:
+            type: string
+      summary: Update order
+      tags:
+      - orders
+  /orders/upload/id:
+    post:
+      consumes:
+      - application/json
+      description: upload file on folder of order_id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Uploaded
+          schema:
+            type: string
+      summary: Get details of upload file
+      tags:
+      - orders
+swagger: "2.0"

@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "2f9ac7ac-b541-4bd6-9ead-cafcfe328f49",
+		"name": "orderTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\"Desc\":\"Test Test\",\"Title\":\"First Order !\" ,\"ItemList\":[{\"Name\":\"Nabil\", \"Qty\":2, \"UnitPrice\":5},{\"Name\":\"Nabil\", \"Qty\":2, \"UnitPrice\":5},{\"Name\":\"Mohamed\",  \"Qty\":1, \"UnitPrice\":10}]\r\n, \"Comments\":[{\"Body\":\"First Comment Here !\"}], \"ShippingLife\":{\"TrackingNumber\":\"125s\", \"ShippingMethod\":\"126s\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=123",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/id?id=60e9c19918daec5edcf4de29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60e9c19918daec5edcf4de29"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/id?id=60e9c06a3e544f1243623ed6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60e9c06a3e544f1243623ed6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"ID\": \"60e9c4ea6e2da3aad394db9e\", \"CreatedAt\": \"2021-06-27T09:40:03.96Z\", \"UpdatedAt\": \"2021-06-27T09:40:03.96Z\", \"Desc\": \"Anouther Desc\", \"Status\": \"ss\", \"Title\": \"Title\", \"ItemList\":[{\"Name\":\"pan\",\"Qty\":6,\"UnitPrice  \":8},\r\n{\"Name\":\"pan\",\"Qty\":6,\"UnitPrice  \":8},{\"Name\":\"pan\",\"Qty\":6,\"UnitPrice  \":8}],\"ShippingLife\":\r\n { \"TrackingNumber\": \"144w\", \"ShippingMethod\": \"test\" },\r\n  \"Comments\": [{\"body\":\"any commentsss\"}], \"TotalAmount\": 26 }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/id?id=60e9c4ea6e2da3aad394db9e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60e9c4ea6e2da3aad394db9e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "myFile",
+							"type": "file",
+							"src": "/D:/Projects/Ordering-problem/download/upload-970354311"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/upload/id?id=60e585cf102268407463f70a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"upload",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60e585cf102268407463f70a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListFiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/files?id=60e585cf102268407463f70a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"files"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "60e585cf102268407463f70a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Path\": \"orders/60e585cf102268407463f70a/upload-970354311\",\"Size\":30}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders/download",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"download"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
